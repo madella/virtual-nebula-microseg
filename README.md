@@ -16,7 +16,7 @@ Se riesci a trovare delle immagini/container di macchine virtuali che ti rappres
   - file configurazione: https://github.com/zclod/dhall-microsegmentation (not used btw)
 
 ## Setup
-Install docker then:
+Install docker (i suggest also docker-buildx) then:
 ```bash:
 docker network create --driver=bridge   --subnet=172.20.0.0/24 iot-simulator
 ```
@@ -35,13 +35,13 @@ The address configured in micro-segmented-vpn:
 - 192.168.100.50 (iot-master)
 
 ## How to use
-First of use this script to build properly all containers:
+First of use this script to build properly all containers (it takes some minutes):
 ```bash:
 ./build_containers.sh
 ```
-Then start them with that script (or manually if you want)
+Then start them with that script (or manually if you want) (do not worry about *Cannot kill container:* errors)
 ```bash:
-./start_containers.sh
+./run_containers.sh
 ```
 Finally to inspect that everythin is working:
 ```bash:
