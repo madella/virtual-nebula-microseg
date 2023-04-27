@@ -15,6 +15,48 @@ Se riesci a trovare delle immagini/container di macchine virtuali che ti rappres
 - Nebula : https://github.com/slackhq/nebula
   - file configurazione: https://github.com/zclod/dhall-microsegmentation (not used btw)
 
+## Blueprint
+I've choose to set the following configuration in device's firewall
+
+### iot-devs:
+port 1883 to communicate to master-iot in outbound communication and ``icmp`` in & out for testing nebula networking
+```
+outbound:
+    - port: 1883
+      proto: any
+      host: iot-master
+
+    - port: any
+      proto: icmp
+      host: any
+
+  inbound:
+    - port: any
+      proto: icmp
+      host: any
+```
+### iot-master:
+Allowing inbound for mqtt port (1883)
+```
+outbound:
+    - port: any
+      proto: any
+      host: any
+
+  inbound:
+    - port: any
+      proto: icmp
+      host: any
+    
+    - port: 1883
+      proto: any
+      host: any
+```
+### lighthouse:
+I left as it was lighthouse firewall rules
+
+------------------------------
+
 ## Setup
 Install docker (i suggest also docker-buildx) then:
 ```bash:
