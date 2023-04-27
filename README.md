@@ -40,7 +40,7 @@ Allowing inbound for mqtt port (1883)
 ```
 outbound:
     - port: any
-      proto: any
+      proto: icmp
       host: any
 
   inbound:
@@ -53,7 +53,7 @@ outbound:
       host: any
 ```
 ### lighthouse:
-I left as it was lighthouse firewall rules
+I left default lighthouse firewall rules
 
 ------------------------------
 
