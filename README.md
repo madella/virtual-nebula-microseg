@@ -113,3 +113,6 @@ docker run
     --device /dev/net/tun:/dev/net/tun\
   [...]
 ```
+
+## Next steps:
+Implementing dynamic number of iot, parametrizable with auto config & auto-deploying containers
