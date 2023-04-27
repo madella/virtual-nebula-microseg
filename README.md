@@ -20,7 +20,7 @@ Install docker (i suggest also docker-buildx) then:
 ```bash:
 docker network create --driver=bridge --subnet=172.20.0.0/24 iot-simulator
 ```
-The network used on *bare-metal*:
+The network used on "*bare-metal*":
 - 127.20.0.100 (lighthouse) //because 127.20.0.1 is used to link virtual interface to docker network itself
 - 127.20.0.2 (iot-dev-2)
 - 127.20.0.3 (iot-dev-3)
