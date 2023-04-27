@@ -18,7 +18,7 @@ Se riesci a trovare delle immagini/container di macchine virtuali che ti rappres
 ## Setup
 Install docker (i suggest also docker-buildx) then:
 ```bash:
-docker network create --driver=bridge   --subnet=172.20.0.0/24 iot-simulator
+docker network create --driver=bridge --subnet=172.20.0.0/24 iot-simulator
 ```
 The network used on *bare-metal*:
 - 127.20.0.100 (lighthouse)
