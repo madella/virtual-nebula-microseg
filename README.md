@@ -13,7 +13,7 @@ Se riesci a trovare delle immagini/container di macchine virtuali che ti rappres
 - Zero Trust
 - Micro-segmentation
 - Nebula : https://github.com/slackhq/nebula
-  - file configurazione: https://github.com/zclod/dhall-microsegmentation (not used btw)
+  - file configurazione: https://github.com/zclod/dhall-microsegmentation
 
 ## Blueprint
 I've choose to set the following configuration in device's firewall
