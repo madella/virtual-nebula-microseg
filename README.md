@@ -81,7 +81,7 @@ The address configured in micro-segmented-vpn:
 - 192.168.100.50 (iot-master)
 
 ## How to use
-In the first run to do all automatically: (it takes some minutes also based on x) (you need to choose the x you want -> number of x)
+In the first run to do all automatically: (it takes some minutes also based on x) (you need to choose the x you want -> number of iot)
 ```bash:
 ./setup_env.sh x
 ```
