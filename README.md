@@ -15,7 +15,9 @@ Se riesci a trovare delle immagini/container di macchine virtuali che ti rappres
 - Nebula : https://github.com/slackhq/nebula
   - file configurazione: https://github.com/zclod/dhall-microsegmentation
 
-## Blueprint
+LEGEND: ``x`` is used to represent number of iot, x is parametric, and you can run the number you want!
+
+## Firewalls
 I've choose to set the following configuration in device's firewall
 
 ### iot-devs:
@@ -57,34 +59,43 @@ I left default lighthouse firewall rules
 
 ------------------------------
 
-## Setup
-Install docker (i suggest also docker-buildx) then:
-```bash:
-docker network create --driver=bridge --subnet=172.20.0.0/24 iot-simulator
-```
+## Network configuration
+
 The network used on "*bare-metal*":
-- 127.20.0.100 (lighthouse) //because 127.20.0.1 is used to link virtual interface to docker network itself
-- 127.20.0.2 (iot-dev-2)
-- 127.20.0.3 (iot-dev-3)
-- 127.20.0.4 (iot-dev-4)
-- 127.20.0.50 (iot-master)
+- 127.20.0.100/24 (lighthouse) //cannot use 127.20.x.1 because is used to link virtual interface to docker network itself
+- 127.20.2.2/24 (iot-dev-2)
+- 127.20.3.2/24 (iot-dev-3)
+- [...]
+- 127.20.x.2/24 (iot-dev-x)
+- 127.20.50.2/24 (iot-master)
+(all different networks, not a part of same subnet!)
 
 The address configured in micro-segmented-vpn:
 - 192.168.100.1 (lighthouse)
+- 192.168.100.x+1 (iot-dev-1) // because ...1 is used for lighthouse
 - 192.168.100.2 (iot-dev-2)
 - 192.168.100.3 (iot-dev-3)
-- 192.168.100.4 (iot-dev-4)
+- [...]
+- 192.168.100.x (iot-dev-x)
 - 192.168.100.50 (iot-master)
 
 ## How to use
-First of use this script to build properly all containers (it takes some minutes):
+In the first run to do all automatically  (it takes some minutes also based on x) (you need to choose the x you want -> number of x):
 ```bash:
-./build_containers.sh
+./setup_env x
 ```
-Then start them with that script (or manually if you want) (do not worry about *Cannot kill container:* errors)
+--------------------------------------------------------------------------------------------------------------
+After first run, if you want to resart container you can start them with that script (or manually if you want) (do not worry about *Cannot kill container:* errors)
 ```bash:
 ./run_containers.sh
 ```
+and if you want to rebuild them:
+```bash:
+./build_containers.sh
+```
+
+NB: here we do not need to specify ``x`` because the value is saved on local file ``.nIOT``
+--------------------------------------------------------------------------------------------------------
 Finally to inspect that everythin is working:
 ```bash:
 docker attach iot-master
@@ -113,6 +124,3 @@ docker run
     --device /dev/net/tun:/dev/net/tun\
   [...]
 ```
-
-## Next steps:
-Implementing dynamic number of iot, parametrizable with auto config & auto-deploying containers
