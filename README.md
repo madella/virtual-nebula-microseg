@@ -106,7 +106,7 @@ and if you want to rebuild them:
 ./build_containers.sh
 ```
 
-NB: here we do not need to specify ``x`` because the value is saved on local file ``.nIOT``
+### NB: here we do not need to specify ``x`` because the value is saved on local file ``.nIOT``
 --------------------------------------------------------------------------------------------------------
 Finally to inspect that everythin is working:
 ```bash:
