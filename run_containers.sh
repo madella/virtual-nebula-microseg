@@ -1,20 +1,6 @@
 #!/bin/bash
 n=$(cat $(pwd)/.nIOT)
 ## LIGHTHOUSE
-if [ $# -ge 1 ]; then
-    docker kill iot-dev-$1 
-    docker rm iot-dev-$1
-    docker run -d -t --name iot-dev-$1 \
-    --net iot-simulator    \
-    --rm \
-    --entrypoint /bin/bash \
-    --privileged \
-    --cap-add=NET_ADMIN \
-    --device /dev/net/tun:/dev/net/tun\
-    iot-dev:$1
-    docker exec -it iot-dev-$1 /bin/bash
-    exit 0
-fi
 docker kill lighthouse
 docker run -d -t --name lighthouse \
     --rm \
@@ -23,33 +9,34 @@ docker run -d -t --name lighthouse \
     --cap-add=NET_ADMIN \
     --device /dev/net/tun:/dev/net/tun\
     lighthouse-dev
-
+## iot-master
 docker kill iot-master
 docker run -d -t --name iot-master \
     --rm \
-    -e "HOSTNAME=lighthouse" \
+    -e "HOSTNAME=iot-master" \
     --net master-net --ip 172.20.50.2 \
     --cap-add=NET_ADMIN \
     --device /dev/net/tun:/dev/net/tun\
     iot-master-dev
-
+## iot-devs
 for i in $(seq $n);do
-    docker kill iot-dev-$i #&& docker rm iot-dev:$i
+    docker kill iot-dev-$i
     docker run -t -d --name iot-dev-$i \
      --net iot-net-$i \
      --rm \
      -e "HOSTNAME=iot$i" \
-     --ip 172.20.$i.2 \
      --cap-add=NET_ADMIN \
      --device /dev/net/tun:/dev/net/tun\
      iot-dev:$i
-     #--entrypoint /bin/bash \
+     #--ip 172.20.$i.2 \
 done
 
-
-## In order to simulat internet connection, we need to connect networks to each other with the following lines:
+#### IMPORTANT ####
+## In order to simulat internet connection, 
+## we need to connect all networks to lighthouse "physical" network (lighthouse-net)
+## with the following lines:
 echo "Connecting iot-dev-s & master to lighthouse-net"
-docker network connect lighthouse-net iot-master
 for i in $(seq $n);do
     docker network connect lighthouse-net iot-dev-$i
 done
+docker network connect lighthouse-net iot-master
