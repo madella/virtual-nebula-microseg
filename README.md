@@ -80,9 +80,9 @@ The address configured in micro-segmented-vpn:
 - 192.168.100.50 (iot-master)
 
 ## How to use
-In the first run to do all automatically  (it takes some minutes also based on x) (you need to choose the x you want -> number of x):
+In the first run to do all automatically: (it takes some minutes also based on x) (you need to choose the x you want -> number of x)
 ```bash:
-./setup_env x
+./setup_env.sh x
 ```
 --------------------------------------------------------------------------------------------------------------
 After first run, if you want to resart container you can start them with that script (or manually if you want) (do not worry about *Cannot kill container:* errors)
