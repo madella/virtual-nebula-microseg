@@ -125,3 +125,9 @@ docker run
     --device /dev/net/tun:/dev/net/tun\
   [...]
 ```
+
+## Clean env
+At the end of experiment, in order to clean both docker and folders:
+```
+./remove_all.sh
+```
