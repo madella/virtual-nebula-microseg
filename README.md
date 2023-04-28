@@ -55,22 +55,34 @@ outbound:
       host: any
 ```
 ### lighthouse:
-I left default lighthouse firewall rules
+And minimal protocol for lighthouse:
+```
+  outbound:
+    # Allow all outbound traffic from this node
+    - port: any
+      proto: icmp
+      host: any
 
+  inbound:
+    # Allow icmp between any nebula hosts
+    - port: any
+      proto: icmp
+      host: any
+```
 ------------------------------
 
 ## Network configuration
 
 The network used on "*bare-metal*":
-- 127.20.0.100/24 (lighthouse) //cannot use 127.20.x.1 because is used to link virtual interface to docker network itself
-- 127.20.x.y/24 (iot-dev-x) // ip is not fixed (it is possible if we want by reintroducing commented line in the run_containers.sh part of iot-devs), they only became on a specific net
+- 127.20.0.100/24 (lighthouse) ``//cannot use 127.20.x.1 because is used to link virtual interface to docker network itself``
+- 127.20.x.y/24 (iot-dev-x) ``//(y): ip is not fixed (it is possible if we want by reintroducing commented line in the run_containers.sh part of iot-devs), they only became on a specific net``
 - 127.20.50.2/24 (iot-master)
 
 (all different networks, not a part of same subnet!)
 
 The address configured in micro-segmented-vpn:
 - 192.168.100.1 (lighthouse)
-- 192.168.100.x+1 (iot-dev-1) // because ...1 is used for lighthouse
+- 192.168.100.x+1 (iot-dev-1) ``//because ...1 is used for lighthouse``
 - 192.168.100.2 (iot-dev-2)
 - 192.168.100.3 (iot-dev-3)
 - [...]
