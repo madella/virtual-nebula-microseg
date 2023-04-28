@@ -68,6 +68,7 @@ The network used on "*bare-metal*":
 - [...]
 - 127.20.x.2/24 (iot-dev-x)
 - 127.20.50.2/24 (iot-master)
+
 (all different networks, not a part of same subnet!)
 
 The address configured in micro-segmented-vpn:
