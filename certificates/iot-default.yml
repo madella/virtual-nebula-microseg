@@ -5,8 +5,8 @@
 pki:
   # The CAs that are accepted by this node. Must contain one or more certificates created by 'nebula-cert ca'
   ca: /cert/ca.crt
-  cert: /cert/iot-dev-2.crt
-  key: /cert/iot-dev-2.key
+  cert: /cert/iot-dev.crt
+  key: /cert/iot-dev.key
   # blocklist is a list of certificate fingerprints that we will refuse to talk to
   #blocklist:
   #  - c99d4e650533b92061b09918e838a5a0a6aaee21eed1d12fd937682865936c72
@@ -320,4 +320,3 @@ firewall:
     - port: any
       proto: icmp
       host: any
-

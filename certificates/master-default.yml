@@ -308,7 +308,7 @@ firewall:
   outbound:
     # Allow all outbound traffic from this node
     - port: any
-      proto: icmp
+      proto: any
       host: any
 
   inbound:
