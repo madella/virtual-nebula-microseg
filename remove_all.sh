@@ -8,6 +8,9 @@ for i in $(seq $n);do
     docker network rm iot-net-$i
 done
 
+rm -f certificates/ca.crt
+rm -f certificates/ca.key
+
 rm -rfd iot-container/iot-dev-*
 rm -rfd iot-master-container/iot-master-dev
 rm -rfd lighthouse-container/lighthouse-dev

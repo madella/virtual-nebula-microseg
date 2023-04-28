@@ -4,7 +4,7 @@ FILE=./ca.key
 if [ -f "$FILE" ]; then
     echo "$FILE already exists... skipping this part"
 else 
-    nebula-cert ca -name \"iot-microseg-inf\"
+    nebula-cert ca -name \"iot-microseg-project\"
     if [ $? -eq 1 ]; then
         echo "Error on CA-cert creation."
         exit 1
@@ -29,7 +29,7 @@ n=$1
 for i in $(seq $n);do
     echo "HOST 192.168.100.$i]"
     if [ $i -eq 1 ]; then
-        inew=$(expr $i + 1 )
+        inew=$(expr $n + 1 )
         nebula-cert sign -name "iot-dev-$i" -ip "192.168.100.$inew/24" -groups "iot-devs"
     else
         nebula-cert sign -name "iot-dev-$i" -ip "192.168.100.$i/24" -groups "iot-devs"

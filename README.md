@@ -16,7 +16,10 @@ Se riesci a trovare delle immagini/container di macchine virtuali che ti rappres
   - file configurazione: https://github.com/zclod/dhall-microsegmentation
 
 LEGEND: ``x`` is used to represent number of iot, x is parametric, and you can run the number you want!
-
+## Requirements
+You must have installed:
+- nebula (only to produce nebula-cert)
+- docker
 ## Firewalls
 I've choose to set the following configuration in device's firewall
 
@@ -95,7 +98,7 @@ In the first run to do all automatically: (it takes some minutes also based on x
 ./setup_env.sh x
 ```
 --------------------------------------------------------------------------------------------------------------
-After first run, if you want to resart container you can start them with that script (or manually if you want) (do not worry about *Cannot kill container:* errors)
+After first run, if you want to resart container you can start them with that script (or manually if you want)
 ```bash:
 ./run_containers.sh
 ```

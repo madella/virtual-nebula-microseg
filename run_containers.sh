@@ -1,7 +1,7 @@
 #!/bin/bash
 n=$(cat $(pwd)/.nIOT)
 ## LIGHTHOUSE
-docker kill lighthouse
+docker kill lighthouse 2&>1 >> /dev/null
 docker run -d -t --name lighthouse \
     --rm \
     -e "HOSTNAME=lighthouse" \
@@ -10,7 +10,7 @@ docker run -d -t --name lighthouse \
     --device /dev/net/tun:/dev/net/tun\
     lighthouse-dev
 ## iot-master
-docker kill iot-master
+docker kill iot-master 2&>1 >> /dev/null
 docker run -d -t --name iot-master \
     --rm \
     -e "HOSTNAME=iot-master" \
@@ -20,7 +20,7 @@ docker run -d -t --name iot-master \
     iot-master-dev
 ## iot-devs
 for i in $(seq $n);do
-    docker kill iot-dev-$i
+    docker kill iot-dev-$i 2&>1 >> /dev/null
     docker run -t -d --name iot-dev-$i \
      --net iot-net-$i \
      --rm \
