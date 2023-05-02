@@ -21,8 +21,24 @@ You must have installed:
 - nebula (only to produce nebula-cert)
 - docker
 
-## Blueprint 
+## Network's Blueprint 
 ![Blueprint](blueprint.png)
+
+The network used on "*bare-metal*":
+- 127.20.0.100/24 (lighthouse) ``//cannot use 127.20.z.1 because is used to link virtual interface to docker network itself``
+- 127.20.x.y/24 (iot-dev-x) ``//(y!=1): ip is not fixed (it is possible if we want by reintroducing commented line in the run_containers.sh part of iot-devs), they only became on a specific net``
+- 127.20.50.2/24 (iot-master)
+
+(all different networks, not a part of same subnet!)
+
+The address configured in micro-segmented-vpn:
+- 192.168.100.1 (lighthouse)
+- 192.168.100.x+1 (iot-dev-1) ``//because ...1 is used for lighthouse``
+- 192.168.100.2 (iot-dev-2)
+- 192.168.100.3 (iot-dev-3)
+- [...]
+- 192.168.100.x (iot-dev-x)
+- 192.168.100.50 (iot-master)
 
 ## Firewalls
 I've choose to set the following configuration in device's firewall
@@ -77,24 +93,6 @@ And minimal protocol for lighthouse:
       host: any
 ```
 ------------------------------
-
-## Network configuration
-
-The network used on "*bare-metal*":
-- 127.20.0.100/24 (lighthouse) ``//cannot use 127.20.z.1 because is used to link virtual interface to docker network itself``
-- 127.20.x.y/24 (iot-dev-x) ``//(y!=1): ip is not fixed (it is possible if we want by reintroducing commented line in the run_containers.sh part of iot-devs), they only became on a specific net``
-- 127.20.50.2/24 (iot-master)
-
-(all different networks, not a part of same subnet!)
-
-The address configured in micro-segmented-vpn:
-- 192.168.100.1 (lighthouse)
-- 192.168.100.x+1 (iot-dev-1) ``//because ...1 is used for lighthouse``
-- 192.168.100.2 (iot-dev-2)
-- 192.168.100.3 (iot-dev-3)
-- [...]
-- 192.168.100.x (iot-dev-x)
-- 192.168.100.50 (iot-master)
 
 ## How to use
 In the first run to do all automatically: (it takes some minutes also based on x) (you need to choose the x you want -> number of iot)
