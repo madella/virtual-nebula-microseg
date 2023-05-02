@@ -77,8 +77,8 @@ And minimal protocol for lighthouse:
 ## Network configuration
 
 The network used on "*bare-metal*":
-- 127.20.0.100/24 (lighthouse) ``//cannot use 127.20.x.1 because is used to link virtual interface to docker network itself``
-- 127.20.x.y/24 (iot-dev-x) ``//(y): ip is not fixed (it is possible if we want by reintroducing commented line in the run_containers.sh part of iot-devs), they only became on a specific net``
+- 127.20.0.100/24 (lighthouse) ``//cannot use 127.20.z.1 because is used to link virtual interface to docker network itself``
+- 127.20.x.y/24 (iot-dev-x) ``//(y!=1): ip is not fixed (it is possible if we want by reintroducing commented line in the run_containers.sh part of iot-devs), they only became on a specific net``
 - 127.20.50.2/24 (iot-master)
 
 (all different networks, not a part of same subnet!)
@@ -102,7 +102,7 @@ After first run, if you want to resart container you can start them with that sc
 ```bash:
 ./run_containers.sh
 ```
-``run_containers.sh`` contain the real trick of this project, running manually, could cause some problems! In order to understand all a read of this file is recommended.
+``run_containers.sh`` contain the leading actor (also with yml firewalls) of this project, running manually, could cause some problems. In order to understand configuration of this project a read of this script is recommended.
 
 and if you want to rebuild them:
 ```bash:
