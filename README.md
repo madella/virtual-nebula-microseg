@@ -125,7 +125,7 @@ ping 192.168.100.*x*
 where instead of ``lighthouse`` you can change with ``iot-master`` or ``iot-dev-*``.
 
 ## Troubleshooting
-### TUN/TAP:
+### TUN/TAP on arch-linux:
 i've had some problem with TUN/TAP dev since i was runningh this entire project on Arch linux, but with 
 ```
 find /lib/modules/ -iname 'tun.ko.zst'
@@ -134,13 +134,14 @@ And then after finding it:
 ```
 insmod /lib/modules/6.2.11-arch1-1/kernel/drivers/net/tun.ko.zst
 ```
-in the end with
+in the end with the following command:
 ```
 docker run
   [...]
     --device /dev/net/tun:/dev/net/tun\
   [...]
 ```
+it is expected to work.
 
 ## Clean env
 At the end of experiment, in order to clean both docker and folders:
