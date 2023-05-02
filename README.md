@@ -20,6 +20,10 @@ LEGEND: ``x`` is used to represent number of iot, x is parametric, and you can r
 You must have installed:
 - nebula (only to produce nebula-cert)
 - docker
+
+## Blueprint 
+![Blueprint](blueprint.png)
+
 ## Firewalls
 I've choose to set the following configuration in device's firewall
 
