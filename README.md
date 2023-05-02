@@ -15,13 +15,13 @@ Se riesci a trovare delle immagini/container di macchine virtuali che ti rappres
 - Nebula : https://github.com/slackhq/nebula
   - file configurazione: https://github.com/zclod/dhall-microsegmentation
 
-LEGEND: ``x`` is used to represent number of iot, x is parametric, and you can run the number you want!
 ## Requirements
 You must have installed:
 - nebula (only to produce nebula-cert)
 - docker
 
 ## Network's Blueprint 
+LEGEND: ``x`` is used to represent number of iot, x is parametric, and you can run the number that you want
 ![Blueprint](blueprint.png)
 
 The network used on "*bare-metal*":
