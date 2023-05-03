@@ -2,7 +2,7 @@
 FROM archlinux:latest
 
 RUN pacman -Syy
-RUN pacman -S --noconfirm nebula python 
+RUN pacman -S --noconfirm nebula python net-tools
 
 ADD lighthouse-dev /cert
 # LIGHTHOUSE needs to expose only port for nebula itself.

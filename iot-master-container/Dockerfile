@@ -2,7 +2,7 @@
 FROM archlinux:latest
 
 RUN pacman -Syy
-RUN pacman -S --noconfirm nebula python netcat
+RUN pacman -S --noconfirm nebula python net-tools netcat
 
 ADD iot-master-dev /cert
 

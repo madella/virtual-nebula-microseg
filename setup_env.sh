@@ -12,10 +12,10 @@ case $1 in
 esac
 
 ## Setup docker networks
-docker network create --driver=bridge --subnet=172.20.0.0/24 lighthouse-net
-docker network create --driver=bridge --subnet=172.20.50.0/24 master-net
+docker network create --subnet=172.20.0.0/24 lighthouse-net
+docker network create --subnet=172.20.50.0/24 master-net
 for i in $(seq $1);do
-    docker network create --driver=bridge --subnet=172.20.$i.0/24 iot-net-$i
+    docker network create --subnet=172.20.$i.0/24 iot-net-$i
 done
 
 ## Run CA_create
