@@ -7,6 +7,7 @@ Il tool in questa repository zclod/dhall-microsegmentation ti permette di genera
 Nebula: A scalable overlay networking tool with a focus on performance, simplicity and security (github.com) che si tratta di una sorta di vpn con il quale puoi implementare la micro segmentazione.
 
 Se riesci a trovare delle immagini/container di macchine virtuali che ti rappresentano device iot/cps potresti cercare di connetterli tramite questo modo, implementare la microsegmentazione per isolarli tra di loro e testare che tutto funzioni.
+--------------------------------
 
 ## Concepts
 - Cyber Physical System
@@ -25,9 +26,9 @@ LEGEND: ``x`` is used to represent number of iot, x is parametric, and you can r
 ![Blueprint](blueprint.png)
 
 The network used on "*bare-metal*":
-- 127.20.0.100/24 (lighthouse) ``//cannot use 127.20.z.1 because is used to link virtual interface to docker network itself``
-- 127.20.x.y/24 (iot-dev-x) ``//(y!=1): ip is not fixed (it is possible if we want by reintroducing commented line in the run_containers.sh part of iot-devs), they only became on a specific net``
-- 127.20.50.2/24 (iot-master)
+- 172.20.0.100/24 (lighthouse) ``//cannot use 172.20.z.1 because is used to link virtual interface to docker network itself``
+- 172.20.x.y/24 (iot-dev-x) ``//(y!=1): ip is not fixed (it is possible if we want by reintroducing commented line in the run_containers.sh part of iot-devs), they only became on a specific net``
+- 172.20.50.2/24 (iot-master)
 
 (all different networks, not a part of same subnet!)
 
