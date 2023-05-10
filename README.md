@@ -1,12 +1,13 @@
 # Project Work On Cybersecurity (3CFU)
+## Assignment:
+Set up a moderately complex testing environment that simulates an industrial/Cyber Physical System (CPS) context and is configured with a zero-trust approach through microsegmentation.
 
-Mettere in piedi un ambiente di test moderatamente complesso che simuli un contesto industriale / CPS (Cyber Physical System) e configurato con un approccio zero trust tramite micro segmentation.
+The tool in this repository zclod/dhall-microsegmentation allows you to generate configuration files for a network called Nebula by slackhq/nebula:
 
-Il tool in questa repository zclod/dhall-microsegmentation ti permette di generare i file di configurazione per una rete nebula slackhq/nebula: 
+Nebula: A scalable overlay networking tool with a focus on performance, simplicity, and security (github.com), which is a kind of VPN that enables you to implement microsegmentation.
 
-Nebula: A scalable overlay networking tool with a focus on performance, simplicity and security (github.com) che si tratta di una sorta di vpn con il quale puoi implementare la micro segmentazione.
+If you can find images/containers of virtual machines that represent IoT/CPS devices, you could try connecting them using this method, implementing microsegmentation to isolate them from each other, and test that everything functions properly.
 
-Se riesci a trovare delle immagini/container di macchine virtuali che ti rappresentano device iot/cps potresti cercare di connetterli tramite questo modo, implementare la microsegmentazione per isolarli tra di loro e testare che tutto funzioni.
 --------------------------------
 
 ## Concepts
